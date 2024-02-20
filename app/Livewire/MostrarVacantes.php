@@ -9,7 +9,14 @@ use Livewire\WithPagination;
 class MostrarVacantes extends Component
 {
     use WithPagination;
-    
+
+    protected $listeners = ['eliminarVacante'];
+
+    public function eliminarVacante(Vacante $vacante)
+    {
+        $vacante->delete();
+    }
+
     public function render()
     {
         $vacantes = Vacante::where('user_id', auth()->user()->id)->paginate(5);
