@@ -11,9 +11,9 @@
                 </div>
     
                 <div class="flex flex-col md:flex-row gap-3 items-stretch mt-5 md:mt-0">
-                    <a href="#" class="text-center bg-slate-800 py-2 px-4 rounded-lg text-white text-sm font-bold uppercase">Candidatos</a>
+                    <a href="{{ route('candidatos.index', $vacante) }}" class="text-center bg-slate-800 py-2 px-4 rounded-lg text-white text-sm font-bold uppercase">{{ $vacante->candidatos->count() }} Candidatos</a>
                     <a href="{{ route('vacantes.edit', $vacante->id) }}" class="text-center bg-blue-800 py-2 px-4 rounded-lg text-white text-sm font-bold uppercase">Editar</a>
-                    <button href="#" wire:click="$dispatch('mostrarAlerta', {{ $vacante->id }})" class="text-center bg-red-600 py-2 px-4 rounded-lg text-white text-sm font-bold uppercase">Eliminar</button>
+                    <button type="button" wire:click="$dispatch('mostrarAlerta', {{ $vacante->id }})" class="text-center bg-red-600 py-2 px-4 rounded-lg text-white text-sm font-bold uppercase">Eliminar</button>
                 </div>
             </div>
         @empty

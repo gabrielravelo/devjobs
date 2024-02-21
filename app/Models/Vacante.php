@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Salario;
+use App\Models\Candidato;
 use App\Models\Categoria;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -32,5 +33,15 @@ class Vacante extends Model
     public function salario()
     {
         return $this->belongsTo(Salario::class);
+    }
+
+    public function candidatos()
+    {
+        return $this->hasMany(Candidato::class)->orderBy('created_at', 'desc');
+    }
+
+    public function reclutador()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
